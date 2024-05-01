@@ -37,11 +37,12 @@ const Register = () => {
 
     setLoading(true);
 
-    // const { url } = await generateImageURL(image);
+
 
     try {
+      const { url } = await generateImageURL(image);
 
-      const { data } = await axiosFetch.post('/auth/register', { ...formInput, image: 'https://res.cloudinary.com/dcdgqiusj/image/upload/v1682917998/s5rykmglenf5rqwqdpfe.jpg' });
+      const { data } = await axiosFetch.post('/auth/register', { ...formInput, image: url });
       toast.success('Registration successful!');
       setLoading(false);
       navigate('/login');
